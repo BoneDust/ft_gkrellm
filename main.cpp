@@ -13,6 +13,7 @@
 
 #include "TimeModule.hpp"
 #include "HostModule.hpp"
+#include "OSModule.hpp"
 
 int main()
 {
@@ -23,4 +24,8 @@ int main()
     std::cout<<"Current time : "<< timeM.getData()[1]<<std::endl<<std::endl<<std::endl;
     host.retrieveData();
     std::cout<<"host name: "<<host.getData()[0]<<std::endl;
+    OSModule os;
+    os.retrieveData();
+    std::cout<<"Type: "<< os.getData()[0] <<std::endl;
+    std::cout<<"release : "<< os.getData()[1]<<std::endl<<std::endl<<std::endl;
 }

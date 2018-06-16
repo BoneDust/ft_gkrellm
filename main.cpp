@@ -14,18 +14,27 @@
 #include "TimeModule.hpp"
 #include "HostModule.hpp"
 #include "OSModule.hpp"
-
+#include "CPUModule.hpp"
 int main()
 {
     TimeModule timeM;
     timeM.retrieveData();
+    std::cout<<"\nDate: "<< timeM.getData()[0] <<std::endl;
+    std::cout<<"Current time : "<< timeM.getData()[1]<<std::endl<<std::endl;
+    
     HostModule host;
-    std::cout<<"Date: "<< timeM.getData()[0] <<std::endl;
-    std::cout<<"Current time : "<< timeM.getData()[1]<<std::endl<<std::endl<<std::endl;
     host.retrieveData();
-    std::cout<<"host name: "<<host.getData()[0]<<std::endl;
+    std::cout<<"host name: "<<host.getData()[0]<<std::endl<<std::endl;
+    
     OSModule os;
     os.retrieveData();
-    std::cout<<"Type: "<< os.getData()[0] <<std::endl;
-    std::cout<<"release : "<< os.getData()[1]<<std::endl<<std::endl<<std::endl;
+    std::cout<< os.getData()[0] <<std::endl;
+    std::cout<< os.getData()[1]<<std::endl;
+    std::cout<< os.getData()[2]<<std::endl;
+
+    CPUModule cpu;
+    cpu.retrieveData();
+    std::cout<< cpu.getData()[0] <<std::endl;
+    std::cout<< cpu.getData()[1]<<std::endl;
+    std::cout<< cpu.getData()[2]<<std::endl;
 }

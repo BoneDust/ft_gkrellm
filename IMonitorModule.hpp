@@ -11,6 +11,7 @@
 #include <mach/mach_host.h>
 #include <iostream>
 #include <vector>
+#include <fstream>
 class IMonitorModule
 {
     public:

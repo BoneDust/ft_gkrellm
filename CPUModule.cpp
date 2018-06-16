@@ -13,12 +13,12 @@
 
 #include "CPUModule.hpp"
 
-CPUModule::CPUModule() : _name("CPUModule")
+CPUModule::CPUModule() : IMonitorModule(), _name("CPUModule")
 {
    this-> _data.resize(3); 
 }
 
-CPUModule::CPUModule(std::string name) : _name(name)
+CPUModule::CPUModule(std::string name) : IMonitorModule(name), _name(name)
 {
     this->_data.resize(3);
 }

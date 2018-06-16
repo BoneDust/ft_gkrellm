@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OSModule.hpp                                       :+:      :+:    :+:   */
+/*   Network.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtshekel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 15:40:06 by gtshekel          #+#    #+#             */
-/*   Updated: 2018/06/15 17:46:35 by gtshekel         ###   ########.fr       */
+/*   Created: 2018/06/16 14:58:22 by gtshekel          #+#    #+#             */
+/*   Updated: 2018/06/16 15:05:39 by gtshekel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OS_MODULE_H
-#define OS_MODULE_H
+#ifndef Network_MODULE_H
+#define Network_MODULE_H
 #include "IMonitorModule.hpp"
 
-class OSModule : public IMonitorModule
+class NetworkModule : public IMonitorModule
 {
     public:
-        OSModule();
-        OSModule(std::string name);
-        ~OSModule();
-        OSModule(const OSModule &src);
-        OSModule &operator=(const OSModule &src);
+        NetworkModule();
+        NetworkModule(std::string name);
+        ~NetworkModule();
+        NetworkModule(const NetworkModule &src);
+        NetworkModule &operator=(const NetworkModule &src);
         void retrieveData(void);
         std::vector<std::string> getData(void) const;
         std::string getName() const;             

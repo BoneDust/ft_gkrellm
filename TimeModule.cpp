@@ -13,12 +13,12 @@
 
 #include "TimeModule.hpp"
 
-TimeModule::TimeModule() : _name("TimeModule")
+TimeModule::TimeModule() : IMonitorModule(), _name("CPUModule")
 {
    this-> _data.resize(2); 
 }
 
-TimeModule::TimeModule(std::string name) : _name(name)
+TimeModule::TimeModule(std::string name) : IMonitorModule(name), _name(name)
 {
     this->_data.resize(2);
 }

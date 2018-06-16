@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMonitorModule.cpp                                 :+:      :+:    :+:   */
+/*   IMonitorDisplay.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtshekel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 14:34:18 by gtshekel          #+#    #+#             */
-/*   Updated: 2018/06/15 14:34:23 by gtshekel         ###   ########.fr       */
+/*   Created: 2018/06/16 16:04:46 by gtshekel          #+#    #+#             */
+/*   Updated: 2018/06/16 16:10:46 by gtshekel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMonitorModule.hpp"
+#include "IMonitorDisplay.hpp"
 
-IMonitorModule::IMonitorModule(){};
-IMonitorModule::~IMonitorModule(){};
-IMonitorModule::IMonitorModule(std::string name){this->_name = name;};
+IMonitorDisplay::IMonitorDisplay(){}
+IMonitorDisplay::IMonitorDisplay(std::string name){this->_name = name;}
+IMonitorDisplay::~IMonitorDisplay(){}

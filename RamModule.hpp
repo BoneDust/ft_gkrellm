@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OSModule.hpp                                       :+:      :+:    :+:   */
+/*   RamModule.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtshekel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 15:40:06 by gtshekel          #+#    #+#             */
-/*   Updated: 2018/06/15 17:46:35 by gtshekel         ###   ########.fr       */
+/*   Created: 2018/06/16 12:44:44 by gtshekel          #+#    #+#             */
+/*   Updated: 2018/06/16 12:46:29 by gtshekel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OS_MODULE_H
-#define OS_MODULE_H
+#ifndef Ram_MODULE_H
+#define Ram_MODULE_H
 #include "IMonitorModule.hpp"
 
-class OSModule : public IMonitorModule
+class RamModule : public IMonitorModule
 {
     public:
-        OSModule();
-        OSModule(std::string name);
-        ~OSModule();
-        OSModule(const OSModule &src);
-        OSModule &operator=(const OSModule &src);
+        RamModule();
+        RamModule(std::string name);
+        ~RamModule();
+        RamModule(const RamModule &src);
+        RamModule &operator=(const RamModule &src);
         void retrieveData(void);
         std::vector<std::string> getData(void) const;
         std::string getName() const;             

@@ -13,12 +13,12 @@
 
 #include "OSModule.hpp"
 
-OSModule::OSModule() : _name("OSModule")
+OSModule::OSModule() : IMonitorModule(), _name("CPUModule")
 {
    this-> _data.resize(3); 
 }
 
-OSModule::OSModule(std::string name) : _name(name)
+OSModule::OSModule(std::string name) : IMonitorModule(name), _name(name)
 {
     this->_data.resize(3);
 }

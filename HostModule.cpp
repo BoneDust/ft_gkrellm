@@ -12,12 +12,12 @@
 
 #include "HostModule.hpp"
 
-HostModule::HostModule() : _name("HostModule")
+HostModule::HostModule() : IMonitorModule(), _name("CPUModule")
 {
    this-> _data.resize(1); 
 }
 
-HostModule::HostModule(std::string name) : _name(name)
+HostModule::HostModule(std::string name) : IMonitorModule(name), _name(name)
 {
     this->_data.resize(1);
 }
@@ -41,6 +41,7 @@ void HostModule::retrieveData()
 {
     struct utsname data;
     uname(&data);
+    
     this->_data[0] = data.nodename;
 }
 

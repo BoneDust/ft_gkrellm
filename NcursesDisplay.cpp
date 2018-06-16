@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMonitorModule.cpp                                 :+:      :+:    :+:   */
+/*   NcursesDisplay.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtshekel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 14:34:18 by gtshekel          #+#    #+#             */
-/*   Updated: 2018/06/15 14:34:23 by gtshekel         ###   ########.fr       */
+/*   Created: 2018/06/16 16:01:51 by gtshekel          #+#    #+#             */
+/*   Updated: 2018/06/16 16:01:53 by gtshekel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMonitorModule.hpp"
+#include "NcursesDisplay.hpp"
 
-IMonitorModule::IMonitorModule(){};
-IMonitorModule::~IMonitorModule(){};
-IMonitorModule::IMonitorModule(std::string name){this->_name = name;};
+void NcursesDisplay::renderData();
+void NcursesDisplay::renderTime(TimeModule timeM);
+void NcursesDisplay::renderHost(HostModule host);
+void NcursesDisplay::renderOS(OSModule os);
+void NcursesDisplay::renderCPU(CPUModule cpu);
+void NcursesDisplay::renderRam(RamModule ram);
+void NcursesDisplay::renderNetwork(NetworkModule network);

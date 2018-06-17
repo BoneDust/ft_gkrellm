@@ -69,7 +69,6 @@ void CPUModule::retrieveData()
                     this->_usage[0] = static_cast<int>(roundf(std::stod(user)));
                     this->_usage[1] = static_cast<int>(roundf(std::stod(sys)));
                     this->_usage[2] = static_cast<int>(roundf(std::stod(idle)));
-                    std::cout<<_usage[0]<<std::endl;
                     this->_data[i] = user;
                     this->_data[i + 1] = sys;
                     this->_data[i + 2] = idle;

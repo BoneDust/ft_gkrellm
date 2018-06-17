@@ -96,14 +96,20 @@ void NcursesDisplay::renderCPU(CPUModule cpu, WINDOW *win)
     mvwprintw(win, 5, 3, items[1].c_str());
     mvwprintw(win, 6, 60, "CPU Usage");
     mvwprintw(win, 7, 3, user.c_str());
+    attron(COLOR_PAIR(2));
     if(use[0]>=1)
         mvwprintw(win, 7, 18 + use[0], "*");
+    attroff(COLOR_PAIR(2));
     mvwprintw(win, 8, 3, sys.c_str());
+    attron(COLOR_PAIR(2));
     if(use[1]>=1)
         mvwprintw(win, 8, 18 + use[1], "*");
+    attroff(COLOR_PAIR(2));
     mvwprintw(win, 9, 3, idle.c_str());
+    attron(COLOR_PAIR(2));
     if(use[2]>=1)
         mvwprintw(win, 9, 18 + use[2], "*");
+    attroff(COLOR_PAIR(2));
 }
 void NcursesDisplay::renderRam(RamModule ram, WINDOW *win)
 {

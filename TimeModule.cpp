@@ -18,11 +18,6 @@ TimeModule::TimeModule() : IMonitorModule()
    this-> _data.resize(2); 
 }
 
-TimeModule::TimeModule(int h, int w) : IMonitorModule(h, w)
-{
-    this->_data.resize(2);
-}
-
 TimeModule::TimeModule(const TimeModule &src)
 {
     *this = src;
@@ -32,8 +27,6 @@ TimeModule::~TimeModule(){}
 
 TimeModule &TimeModule::operator=(const TimeModule &src)
 {
-    this->_height = src.getHeight();
-    this->_width = src.getWidth();
     this->_data = src.getData();
     this->_time = src.getTime();
     return (*this);

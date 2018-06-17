@@ -17,11 +17,6 @@ NetworkModule::NetworkModule() :  IMonitorModule()
    this-> _data.resize(2); 
 }
 
-NetworkModule::NetworkModule(int h, int w) : IMonitorModule(h, w)
-{
-    this->_data.resize(2);
-}
-
 NetworkModule::NetworkModule(const NetworkModule &src)
 {
     *this = src;
@@ -31,8 +26,6 @@ NetworkModule::~NetworkModule(){}
 
 NetworkModule& NetworkModule::operator=(const NetworkModule &src)
 {
-    this->_height = src.getHeight();
-    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }

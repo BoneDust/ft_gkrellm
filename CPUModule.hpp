@@ -18,11 +18,13 @@ class CPUModule : public IMonitorModule
 {
     public:
         CPUModule();
-        CPUModule(int h, int w);
         ~CPUModule();
         CPUModule(const CPUModule &src);
         CPUModule &operator=(const CPUModule &src);
-        void retrieveData(void);           
+        void retrieveData(void);
+        std::vector<int> getUsage() const;
+    private:
+        std::vector<int> _usage;        
 };
 
 #endif

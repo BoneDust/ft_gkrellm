@@ -18,7 +18,6 @@ class OSModule : public IMonitorModule
 {
     public:
         OSModule();
-        OSModule(int h, int w);
         ~OSModule();
         OSModule(const OSModule &src);
         OSModule &operator=(const OSModule &src);

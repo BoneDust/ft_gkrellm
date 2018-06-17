@@ -18,7 +18,6 @@ class TimeModule : public IMonitorModule
 {
     public:
         TimeModule();
-        TimeModule(int h, int w);
         ~TimeModule();
         TimeModule(const TimeModule &src);
         TimeModule &operator=(const TimeModule &src);

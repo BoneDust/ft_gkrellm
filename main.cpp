@@ -27,6 +27,7 @@ int main()
     RamModule ram;
     NetworkModule net;
     NcursesDisplay ncurses;
+    //cpu.retrieveData();
     ncurses.renderData(timeM, host, os, cpu, ram, net);
     return (0);
 }

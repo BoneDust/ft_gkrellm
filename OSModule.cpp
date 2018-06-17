@@ -18,11 +18,6 @@ OSModule::OSModule() : IMonitorModule()
    this->_data.resize(3); 
 }
 
-OSModule::OSModule(int h, int w) : IMonitorModule(h, w)
-{
-    this->_data.resize(3);
-}
-
 OSModule::OSModule(const OSModule &src)
 {
     *this = src;
@@ -32,8 +27,6 @@ OSModule::~OSModule(){}
 
 OSModule& OSModule::operator=(const OSModule &src)
 {
-    this->_height = src.getHeight();
-    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }

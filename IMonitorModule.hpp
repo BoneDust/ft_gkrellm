@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <cmath>
 class IMonitorModule
 {
     public:
@@ -17,14 +18,8 @@ class IMonitorModule
         IMonitorModule &operator=(const IMonitorModule &src);
         virtual ~IMonitorModule();
         virtual void retrieveData() = 0;
-        void setHeight(int len);
-        void setWidth(int wid);
-        int  getHeight(void) const;
-        int  getWidth(void) const;
         std::vector<std::string> getData(void) const;
     protected:
         std::vector<std::string> _data;
-        int _height;
-        int _width;
 };
 #endif

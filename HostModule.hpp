@@ -18,7 +18,6 @@ class HostModule : public IMonitorModule
 {
     public:
         HostModule();
-        HostModule(int h, int w);
         ~HostModule();
         HostModule(const HostModule &src);
         HostModule &operator=(const HostModule &src);

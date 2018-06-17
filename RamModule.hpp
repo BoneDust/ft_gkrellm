@@ -18,7 +18,6 @@ class RamModule : public IMonitorModule
 {
     public:
         RamModule();
-        RamModule(int h, int w);
         ~RamModule();
         RamModule(const RamModule &src);
         RamModule &operator=(const RamModule &src);

@@ -17,11 +17,6 @@ HostModule::HostModule() : IMonitorModule()
    this-> _data.resize(2); 
 }
 
-HostModule::HostModule(int h, int w) : IMonitorModule(h, w)
-{
-    this->_data.resize(2);
-}
-
 HostModule::HostModule(const HostModule &src)
 {
     *this = src;
@@ -31,8 +26,6 @@ HostModule::~HostModule(){}
 
 HostModule& HostModule::operator=(const HostModule &src)
 {
-    this->_height = src.getHeight();
-    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }

@@ -15,12 +15,8 @@
 
 CPUModule::CPUModule() : IMonitorModule()
 {
-   this-> _data.resize(3); 
-}
-
-CPUModule::CPUModule(int h, int w) : IMonitorModule(h, w)
-{
-    this->_data.resize(3);
+   this-> _data.resize(5);
+   this->_usage.resize(3); 
 }
 
 CPUModule::CPUModule(const CPUModule &src)
@@ -32,12 +28,16 @@ CPUModule::~CPUModule(){}
 
 CPUModule& CPUModule::operator=(const CPUModule &src)
 {
-    this->_height = src.getHeight();
-    this->_width = src.getWidth();
     this->_data = src.getData();
+    this->_usage = src.getUsage();
     return (*this);
 }
 
+
+std::vector<int> CPUModule::getUsage() const
+{
+    return (this->_usage);
+}
 
 void CPUModule::retrieveData()
 {
@@ -59,7 +59,21 @@ void CPUModule::retrieveData()
                 else if (i == 1)
                     this->_data[i] = "CPU cores: " + line;
                 else
-                    this->_data[i] = line;
+                {
+                    std::string tmp = line.substr(line.find_first_of(":") + 1, line.length());
+                    std::string user = tmp.substr(1, tmp.find_first_of('%'));
+                    std::string tmp1 = tmp.substr(user.length() + 8, tmp.length());
+                    std::string sys = tmp1.substr(0, tmp1.find_first_of('%'));
+                    std::string tmp2 = tmp1.substr(sys.length() + 7, tmp1.length());
+                    std::string idle = tmp2.substr(0, tmp2.find_first_of('%'));
+                    this->_usage[0] = static_cast<int>(roundf(std::stod(user)));
+                    this->_usage[1] = static_cast<int>(roundf(std::stod(sys)));
+                    this->_usage[2] = static_cast<int>(roundf(std::stod(idle)));
+                    std::cout<<_usage[0]<<std::endl;
+                    this->_data[i] = user;
+                    this->_data[i + 1] = sys;
+                    this->_data[i + 2] = idle;
+                }
                 i++;
             } 
             data.close();

@@ -17,11 +17,6 @@ RamModule::RamModule() :  IMonitorModule()
    this-> _data.resize(3); 
 }
 
-RamModule::RamModule(int h, int w) : IMonitorModule(h, w)
-{
-    this->_data.resize(3);
-}
-
 RamModule::RamModule(const RamModule &src)
 {
     *this = src;
@@ -31,8 +26,6 @@ RamModule::~RamModule(){}
 
 RamModule &RamModule::operator=(const RamModule &src)
 {
-    this->_height = src.getHeight();
-    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }

@@ -13,5 +13,4 @@
 #include "IMonitorDisplay.hpp"
 
 IMonitorDisplay::IMonitorDisplay(){}
-IMonitorDisplay::IMonitorDisplay(std::string name){this->_name = name;}
 IMonitorDisplay::~IMonitorDisplay(){}

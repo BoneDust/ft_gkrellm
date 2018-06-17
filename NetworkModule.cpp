@@ -12,12 +12,12 @@
 
 #include "NetworkModule.hpp"
 
-NetworkModule::NetworkModule() :  IMonitorModule(), _name("NetworkModule")
+NetworkModule::NetworkModule() :  IMonitorModule()
 {
    this-> _data.resize(2); 
 }
 
-NetworkModule::NetworkModule(std::string name) :IMonitorModule(name), _name(name)
+NetworkModule::NetworkModule(int h, int w) : IMonitorModule(h, w)
 {
     this->_data.resize(2);
 }
@@ -31,7 +31,8 @@ NetworkModule::~NetworkModule(){}
 
 NetworkModule& NetworkModule::operator=(const NetworkModule &src)
 {
-    this->_name = src.getName();
+    this->_height = src.getHeight();
+    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }
@@ -43,7 +44,7 @@ void NetworkModule::retrieveData()
     if(system(NULL))
     {
         system("top -n0 -l1 | grep 'Network' > netInfo.txt");
-        std::ifstream data ("netInfo.txt");
+        std::ifstream data("netInfo.txt");
         if(data.is_open())
         {
             if(getline(data,line))
@@ -61,14 +62,4 @@ void NetworkModule::retrieveData()
         }
         remove("netInfo.txt");
     }
-}
-
-std::string NetworkModule::getName() const
-{
-    return (this->_name);
-}
-
-std::vector<std::string> NetworkModule::getData() const
-{
-    return (this->_data);
 }

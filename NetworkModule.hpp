@@ -18,16 +18,11 @@ class NetworkModule : public IMonitorModule
 {
     public:
         NetworkModule();
-        NetworkModule(std::string name);
+        NetworkModule(int h, int w);
         ~NetworkModule();
         NetworkModule(const NetworkModule &src);
         NetworkModule &operator=(const NetworkModule &src);
-        void retrieveData(void);
-        std::vector<std::string> getData(void) const;
-        std::string getName() const;             
-    private:
-        std::string _name;
-        std::vector<std::string> _data;
+        void retrieveData(void);           
 };
 
 #endif

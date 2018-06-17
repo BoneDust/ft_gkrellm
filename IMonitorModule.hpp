@@ -12,13 +12,19 @@ class IMonitorModule
 {
     public:
         IMonitorModule();
-        IMonitorModule(std::string name);
-        virtual ~IMonitorModule();
-        virtual void retrieveData() = 0;
-    protected:
-        std::string _name;
-    private:
+        IMonitorModule(int h, int w);
         IMonitorModule(const IMonitorModule &src);
         IMonitorModule &operator=(const IMonitorModule &src);
+        virtual ~IMonitorModule();
+        virtual void retrieveData() = 0;
+        void setHeight(int len);
+        void setWidth(int wid);
+        int  getHeight(void) const;
+        int  getWidth(void) const;
+        std::vector<std::string> getData(void) const;
+    protected:
+        std::vector<std::string> _data;
+        int _height;
+        int _width;
 };
 #endif

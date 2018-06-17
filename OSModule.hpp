@@ -18,16 +18,11 @@ class OSModule : public IMonitorModule
 {
     public:
         OSModule();
-        OSModule(std::string name);
+        OSModule(int h, int w);
         ~OSModule();
         OSModule(const OSModule &src);
         OSModule &operator=(const OSModule &src);
-        void retrieveData(void);
-        std::vector<std::string> getData(void) const;
-        std::string getName() const;             
-    private:
-        std::string _name;
-        std::vector<std::string> _data;
+        void retrieveData(void);           
 };
 
 #endif

@@ -13,12 +13,12 @@
 
 #include "CPUModule.hpp"
 
-CPUModule::CPUModule() : IMonitorModule(), _name("CPUModule")
+CPUModule::CPUModule() : IMonitorModule()
 {
    this-> _data.resize(3); 
 }
 
-CPUModule::CPUModule(std::string name) : IMonitorModule(name), _name(name)
+CPUModule::CPUModule(int h, int w) : IMonitorModule(h, w)
 {
     this->_data.resize(3);
 }
@@ -32,7 +32,8 @@ CPUModule::~CPUModule(){}
 
 CPUModule& CPUModule::operator=(const CPUModule &src)
 {
-    this->_name = src.getName();
+    this->_height = src.getHeight();
+    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }
@@ -54,7 +55,7 @@ void CPUModule::retrieveData()
             while(getline(data,line))
             {
                 if (i == 0)
-                    this->_data[i] = "CPU info: " + line.substr(line.find(":"), (int)line.length());
+                    this->_data[i] = "CPU info: " + line.substr(line.find(":"), static_cast<int>(line.length()));
                 else if (i == 1)
                     this->_data[i] = "CPU cores: " + line;
                 else
@@ -65,14 +66,4 @@ void CPUModule::retrieveData()
         }
         remove("cpuinfo.txt");
     }
-}
-
-std::string CPUModule::getName() const
-{
-    return (this->_name);
-}
-
-std::vector<std::string> CPUModule::getData() const
-{
-    return (this->_data);
 }

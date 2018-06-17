@@ -13,12 +13,12 @@
 
 #include "TimeModule.hpp"
 
-TimeModule::TimeModule() : IMonitorModule(), _name("CPUModule")
+TimeModule::TimeModule() : IMonitorModule()
 {
    this-> _data.resize(2); 
 }
 
-TimeModule::TimeModule(std::string name) : IMonitorModule(name), _name(name)
+TimeModule::TimeModule(int h, int w) : IMonitorModule(h, w)
 {
     this->_data.resize(2);
 }
@@ -30,9 +30,10 @@ TimeModule::TimeModule(const TimeModule &src)
 
 TimeModule::~TimeModule(){}
 
-TimeModule& TimeModule::operator=(const TimeModule &src)
+TimeModule &TimeModule::operator=(const TimeModule &src)
 {
-    this->_name = src.getName();
+    this->_height = src.getHeight();
+    this->_width = src.getWidth();
     this->_data = src.getData();
     this->_time = src.getTime();
     return (*this);
@@ -88,16 +89,6 @@ void    TimeModule::retrieveData()
     st<< now->tm_hour << ":" << now->tm_min << ":" << now->tm_sec<< ((now->tm_hour >=12) ? " PM" : " AM");
     this->_data[0] = sd.str();
     this->_data[1] = st.str();
-}
-
-std::vector<std::string> TimeModule::getData() const
-{
-    return (this->_data);
-}
-
-std::string TimeModule::getName() const
-{
-    return (this->_name);
 }
 
 std::time_t TimeModule::getTime() const

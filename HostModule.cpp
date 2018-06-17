@@ -12,14 +12,14 @@
 
 #include "HostModule.hpp"
 
-HostModule::HostModule() : IMonitorModule(), _name("CPUModule")
+HostModule::HostModule() : IMonitorModule()
 {
-   this-> _data.resize(1); 
+   this-> _data.resize(2); 
 }
 
-HostModule::HostModule(std::string name) : IMonitorModule(name), _name(name)
+HostModule::HostModule(int h, int w) : IMonitorModule(h, w)
 {
-    this->_data.resize(1);
+    this->_data.resize(2);
 }
 
 HostModule::HostModule(const HostModule &src)
@@ -31,7 +31,8 @@ HostModule::~HostModule(){}
 
 HostModule& HostModule::operator=(const HostModule &src)
 {
-    this->_name = src.getName();
+    this->_height = src.getHeight();
+    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }
@@ -41,16 +42,19 @@ void HostModule::retrieveData()
 {
     struct utsname data;
     uname(&data);
-    
-    this->_data[0] = data.nodename;
-}
-
-std::string HostModule::getName() const
-{
-    return (this->_name);
-}
-
-std::vector<std::string> HostModule::getData() const
-{
-    return (this->_data);
+    this->_data[0] =  data.nodename;
+    this->_data[0] = "Host PC : " + this->_data[0];
+    if(system(NULL))
+    {
+        std::string line;
+        system("whoami > user.txt");
+        std::ifstream data ("user.txt");
+        if(data.is_open())
+        {
+            if (getline(data,line))
+                this->_data[1]  = "Current user : " + line;
+            data.close();
+        }
+        remove("user.txt");
+    }
 }

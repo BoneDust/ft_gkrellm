@@ -18,16 +18,10 @@ class RamModule : public IMonitorModule
 {
     public:
         RamModule();
-        RamModule(std::string name);
+        RamModule(int h, int w);
         ~RamModule();
         RamModule(const RamModule &src);
         RamModule &operator=(const RamModule &src);
-        void retrieveData(void);
-        std::vector<std::string> getData(void) const;
-        std::string getName() const;             
-    private:
-        std::string _name;
-        std::vector<std::string> _data;
+        void retrieveData(void);           
 };
-
 #endif

@@ -14,4 +14,41 @@
 
 IMonitorModule::IMonitorModule(){};
 IMonitorModule::~IMonitorModule(){};
-IMonitorModule::IMonitorModule(std::string name){this->_name = name;};
+IMonitorModule::IMonitorModule(int height, int width)
+{
+    this->_height = height;
+    this->_width = width;
+}
+
+IMonitorModule::IMonitorModule(const IMonitorModule &src)
+{
+    *this = src;
+}
+IMonitorModule &IMonitorModule::operator=(const IMonitorModule &src)
+{
+    this->_height = src.getHeight();
+    this->_width = src.getWidth();
+    this->_data = src.getData();
+    return (*this);
+}
+
+void IMonitorModule::setHeight(int height)
+{
+    this->_height = height;
+}
+void IMonitorModule::setWidth(int wid)
+{
+    this->_width = wid;
+}
+int  IMonitorModule::getHeight(void) const
+{
+    return (this->_height);
+}
+int  IMonitorModule::getWidth(void) const
+{
+    return (this->_width);
+}
+std::vector<std::string> IMonitorModule::getData(void) const
+{
+    return (this->_data);
+}

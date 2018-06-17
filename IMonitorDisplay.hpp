@@ -14,14 +14,20 @@
 # define IMONITORDISPLAY_H
 #include <iostream>
 #include <ncurses.h>
+#include "TimeModule.hpp"
+#include "HostModule.hpp"
+#include "OSModule.hpp"
+#include "CPUModule.hpp"
+#include "RamModule.hpp"
+#include "NetworkModule.hpp"
+#include <unistd.h>
 
 class IMonitorDisplay
 {
     public:
         IMonitorDisplay();
-        IMonitorDisplay(std::string name);
         virtual ~IMonitorDisplay();
-        virtual void renderData() = 0;
+        virtual void renderData(TimeModule, HostModule, OSModule, CPUModule, RamModule, NetworkModule) = 0;
     private:
         IMonitorDisplay(const IMonitorDisplay &src);
         IMonitorDisplay &operator=(const IMonitorDisplay &src);

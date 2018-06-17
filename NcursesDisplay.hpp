@@ -13,13 +13,9 @@
 
 #ifndef NCURSESDISPLAY_H
 # define NCURSESDISPLAY_H
+# define EXIT 27
 # include "IMonitorDisplay.hpp"
-#include "TimeModule.hpp"
-#include "HostModule.hpp"
-#include "OSModule.hpp"
-#include "CPUModule.hpp"
-#include "RamModule.hpp"
-#include "NetworkModule.hpp"
+
 class NcursesDisplay : public IMonitorDisplay
 {
     public:
@@ -28,15 +24,14 @@ class NcursesDisplay : public IMonitorDisplay
         NcursesDisplay(const NcursesDisplay &src);
         NcursesDisplay &operator=(const NcursesDisplay &src);
         ~NcursesDisplay();
-        void renderData() = 0;       
+        void renderData(TimeModule, HostModule, OSModule, CPUModule, RamModule, NetworkModule);       
     private:
-        WINDOW *win;
-        void renderTime(TimeModule timeM);
-        void renderHost(HostModule host);
-        void renderOS(OSModule os);
-        void renderCPU(CPUModule cpu);
-        void renderRam(RamModule ram);
-        void renderNetwork(NetworkModule network);
+        void renderTime(TimeModule, WINDOW*);
+        void renderHost(HostModule, WINDOW*);
+        void renderOS(OSModule, WINDOW*);
+        void renderCPU(CPUModule, WINDOW*);
+        void renderRam(RamModule, WINDOW*);
+        void renderNetwork(NetworkModule, WINDOW*);
  
 };
 

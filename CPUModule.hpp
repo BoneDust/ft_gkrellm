@@ -18,16 +18,11 @@ class CPUModule : public IMonitorModule
 {
     public:
         CPUModule();
-        CPUModule(std::string name);
+        CPUModule(int h, int w);
         ~CPUModule();
         CPUModule(const CPUModule &src);
         CPUModule &operator=(const CPUModule &src);
-        void retrieveData(void);
-        std::vector<std::string> getData(void) const;
-        std::string getName() const;             
-    private:
-        std::string _name;
-        std::vector<std::string> _data;
+        void retrieveData(void);           
 };
 
 #endif

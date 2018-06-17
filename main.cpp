@@ -17,6 +17,7 @@
 #include "CPUModule.hpp"
 #include "RamModule.hpp"
 #include "NetworkModule.hpp"
+#include "NcursesDisplay.hpp"
 int main()
 {
     TimeModule timeM;
@@ -25,34 +26,7 @@ int main()
     CPUModule cpu;
     RamModule ram;
     NetworkModule net;
-    while (true)
-    {
-        timeM.retrieveData();
-        std::vector<std::string> timeInfo = timeM.getData();
-        for(std::vector<std::string>::iterator item = timeInfo.begin(); item != timeInfo.end();++item)
-        std::cout<< *item <<std::endl;
-
-        host.retrieveData();
-        std::cout<<"host name: "<<host.getData()[0]<<std::endl<<std::endl<<std::endl;
-
-        os.retrieveData();
-        std::vector<std::string> osInfo = os.getData();
-        for(std::vector<std::string>::iterator item = osInfo.begin(); item != osInfo.end();++item)
-        std::cout<< *item <<std::endl;
-
-        cpu.retrieveData();
-        std::vector<std::string> cpuInfo = cpu.getData();
-        for(std::vector<std::string>::iterator item = cpuInfo.begin(); item != cpuInfo.end();++item)
-        std::cout<< *item <<std::endl;
-
-        ram.retrieveData();
-        std::vector<std::string> ramInfo = ram.getData();
-        for(std::vector<std::string>::iterator item = ramInfo.begin(); item != ramInfo.end();++item)
-        std::cout<< *item <<std::endl;
-    
-        net.retrieveData();
-        std::vector<std::string> netInfo = net.getData();
-        for(std::vector<std::string>::iterator item = netInfo.begin(); item != netInfo.end();++item)
-        std::cout<< *item <<std::endl;
-    }
+    NcursesDisplay ncurses;
+    ncurses.renderData(timeM, host, os, cpu, ram, net);
+    return (0);
 }

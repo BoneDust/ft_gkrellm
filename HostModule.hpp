@@ -18,16 +18,10 @@ class HostModule : public IMonitorModule
 {
     public:
         HostModule();
-        HostModule(std::string name);
+        HostModule(int h, int w);
         ~HostModule();
         HostModule(const HostModule &src);
         HostModule &operator=(const HostModule &src);
-        void retrieveData(void);
-        std::vector<std::string> getData(void) const;
-        std::string getName() const;             
-    private:
-        std::string _name;
-        std::vector<std::string> _data;
+        void retrieveData(void);            
 };
-
 #endif

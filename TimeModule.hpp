@@ -13,22 +13,18 @@
 #ifndef TIME_MODULE_H
 #define TIME_MODULE_H
 #include "IMonitorModule.hpp"
+
 class TimeModule : public IMonitorModule
 {
     public:
         TimeModule();
-        TimeModule(std::string name);
+        TimeModule(int h, int w);
         ~TimeModule();
         TimeModule(const TimeModule &src);
         TimeModule &operator=(const TimeModule &src);
-        void retrieveData(void);
-        std::vector<std::string> getData(void) const;
-        std::string getName() const;
+        void retrieveData(void); 
         std::time_t getTime() const;             
     private:
-        std::string _name;
-        std::time_t _time;
-        std::vector<std::string> _data;
+        std::time_t _time;       
 };
-
 #endif

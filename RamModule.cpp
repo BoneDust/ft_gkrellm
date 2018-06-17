@@ -12,12 +12,12 @@
 
 #include "RamModule.hpp"
 
-RamModule::RamModule() :  IMonitorModule(), _name("RamModule")
+RamModule::RamModule() :  IMonitorModule()
 {
    this-> _data.resize(3); 
 }
 
-RamModule::RamModule(std::string name) :IMonitorModule(name), _name(name)
+RamModule::RamModule(int h, int w) : IMonitorModule(h, w)
 {
     this->_data.resize(3);
 }
@@ -29,9 +29,10 @@ RamModule::RamModule(const RamModule &src)
 
 RamModule::~RamModule(){}
 
-RamModule& RamModule::operator=(const RamModule &src)
+RamModule &RamModule::operator=(const RamModule &src)
 {
-    this->_name = src.getName();
+    this->_height = src.getHeight();
+    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }
@@ -44,12 +45,11 @@ void RamModule::retrieveData()
     if(system(NULL))
     {
         system("top -n0 -l1 | grep 'PhysMem' > ramInfo.txt");
-        std::ifstream data ("ramInfo.txt");
+        std::ifstream data("ramInfo.txt");
         if(data.is_open())
         {
             if(getline(data,line))
             {
-
                 std::string total;
                 std::string used;
                 std::string unused;
@@ -57,7 +57,7 @@ void RamModule::retrieveData()
                 unused = temp.substr(temp.find(",") + 2, 5);
                 used = temp.substr(1, 5);
                 int ram = std::stoi(used) + std::stoi(unused);
-                total = "Total ram : " +     std::to_string(ram) + "M";
+                total = "Total ram : " + std::to_string(ram) + "M";
                 this->_data[0] = total;
                 this->_data[1] = "Used : " + used;
                 this->_data[2] = "Unused : " + unused; 
@@ -66,14 +66,4 @@ void RamModule::retrieveData()
         }
         remove("ramInfo.txt");
     }
-}
-
-std::string RamModule::getName() const
-{
-    return (this->_name);
-}
-
-std::vector<std::string> RamModule::getData() const
-{
-    return (this->_data);
 }

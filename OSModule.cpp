@@ -13,12 +13,12 @@
 
 #include "OSModule.hpp"
 
-OSModule::OSModule() : IMonitorModule(), _name("CPUModule")
+OSModule::OSModule() : IMonitorModule()
 {
-   this-> _data.resize(3); 
+   this->_data.resize(3); 
 }
 
-OSModule::OSModule(std::string name) : IMonitorModule(name), _name(name)
+OSModule::OSModule(int h, int w) : IMonitorModule(h, w)
 {
     this->_data.resize(3);
 }
@@ -32,7 +32,8 @@ OSModule::~OSModule(){}
 
 OSModule& OSModule::operator=(const OSModule &src)
 {
-    this->_name = src.getName();
+    this->_height = src.getHeight();
+    this->_width = src.getWidth();
     this->_data = src.getData();
     return (*this);
 }
@@ -58,14 +59,4 @@ void OSModule::retrieveData()
         }
        remove("osinfo.txt");
     }
-}
-
-std::string OSModule::getName() const
-{
-    return (this->_name);
-}
-
-std::vector<std::string> OSModule::getData() const
-{
-    return (this->_data);
 }
